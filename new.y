@@ -36,9 +36,9 @@ loop_stmt: while_stmt
 
 while_stmt: WHILE LP logic_expr RP LB stmt_list RB 
 
-for_stmt: FOR LP assign_stmt COMMA logic_expr COMMA logic_expr COMMA
+for_stmt: FOR LP assign_stmt COMMA logic_expr COMMA
               assign_stmt RP LB stmt_list RB
-        | FOR LP var_declaration COMMA logic_expr COMMA logic_expr COMMA
+        | FOR LP var_declaration COMMA logic_expr COMMA
               assign_stmt RP LB stmt_list RB  
 
 return_stmt: RETURN expr
