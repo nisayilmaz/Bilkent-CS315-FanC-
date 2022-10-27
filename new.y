@@ -117,7 +117,7 @@ read_pressure_data: READ_PRESSURE_DATA LP RP;
 read_quality_data: READ_QUALITY_DATA LP RP;
 read_light_data:= READ_LIGHT_DATA LP RP;
 
-read_sound_data: READ_SOUND_DATA LP switch_id_list RP;
+read_sound_data: READ_SOUND_DATA LP RP;
 read_timer_data:  READ_TIMER_DATA LP RP;
 
 input: IDENT DOL;
