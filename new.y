@@ -100,10 +100,11 @@ call_stmt:primitive_function
           
 non_primitive_function: identifier LP function_input RP;
 
-function_input :identifier COMMA function_input 
+function_input: identifier COMMA function_input 
                 |literal COMMA function_input
                 |INT COMMA function_input 
-                |FLOAT COMMA function_input;
+                |FLOAT COMMA function_input
+                ;
 
 primitive_function: input
                 |output
