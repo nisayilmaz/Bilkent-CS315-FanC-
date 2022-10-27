@@ -1,6 +1,6 @@
 /* FanC++.y */
 %token BEG END RETURN IF ELSE WHILE FOR INT_ID
-%token FLOAT_ID STRING_ID CHAR_ID BOOL_ID STRING
+%token FLOAT_ID STRING_ID CHAR_ID BOOL_ID STRING DIGIT
 %token COMMENT TRUE FALSE INT FLOAT CHAR IDENT ASSIGN
 %token PLUS MINUS EQ MUL DIV SC LB RB LP RP LSB RSB DOT COMMA
 %token HASHTAG AND OR DOL QM COLON STR_IDENT LT GT LTE GTE NEQ
@@ -22,7 +22,9 @@ matched:IF LP logic_expr RP LB matched RB SC ELSE LB matched RB
         |loop_stmt
         |assign_stmt
         |declaration_stmt
+        |return_stmt
         |call_stmt
+        |ternary_stmt
         ;
 
 unmatched: IF LP logic_expr RP LB stmt_list RB
@@ -38,6 +40,11 @@ for_stmt: FOR LP assign_stmt COMMA logic_expr COMMA logic_expr COMMA
               assign_stmt RP LB stmt_list RB
         | FOR LP var_declaration COMMA logic_expr COMMA logic_expr COMMA
               assign_stmt RP LB stmt_list RB  
+
+return_stmt: RETURN expr
+            |RETURN literal
+
+ternary_stmt: logic_expr QM stmt COLON stmt
 
 
 logic_expr: INT comparison_op INT
@@ -92,13 +99,25 @@ call_stmt:primitive_function;
 primitive_function: input
                 |output
                 |check_connection
+                |read_temp_data
+                |read_humidity_data
+                |read_pressure_data
+                |read_quality_data
+                |read_light_data
                 |url_connection
+                |read_sound_data
                 |read_timer_data
                 ;
 
-check_connection: CHECK_CONNECTION LP STRING RP;
 url_connection:   CONNECT_TO_URL LP STRING RP;
-//read_sensor_data: READ_SENSOR_DATA LP ????? RP;
+check_connection: CHECK_CONNECTION LP STRING RP;
+read_temp_data: READ_TEMP_DATA LP RP;
+read_humidity_data: READ_HUMIDITY_DATA LP RP;
+read_pressure_data: READ_PRESSURE_DATA LP RP;
+read_quality_data: READ_QUALITY_DATA LP RP;
+read_light_data:= READ_LIGHT_DATA LP RP;
+
+read_sound_data: READ_SOUND_DATA LP switch_id_list RP;
 read_timer_data:  READ_TIMER_DATA LP RP;
 
 input: IDENT DOL;
@@ -107,6 +126,7 @@ output: IDENT DOL output_body; /*ADD IN&OUT*/
 
 output_body:expr| and_or_expr| literal;
 
+switch_id_list: DIGIT | DIGIT COMMA switch_id_list
 
 op1:PLUS|MINUS;
 op2:MUL|DIV;
