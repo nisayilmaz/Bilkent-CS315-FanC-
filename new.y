@@ -8,10 +8,10 @@
 %token READ_HUMIDITY_DATA READ_PRESSURE_DATA READ_QUALITY_DATA
 %token READ_LIGHT_DATA READ_SOUND_DATA READ_TIMER_DATA
 %token SEND_DATA_TO_CONNECTION RECEIVE_DATA_FROM_CONNECTION
-%token SWITCH_OFF SWITCH_ON IN OUT
+%token SWITCH_OFF SWITCH_ON IN OUT ENDLINE
 
 %%
-program: BEG stmt_list END;
+program: BEG stmt_list END  {printf("program valid\n");};
 
 stmt_list: stmt SC
         | stmt_list stmt SC;
@@ -125,7 +125,7 @@ read_temp_data: READ_TEMP_DATA LP RP;
 read_humidity_data: READ_HUMIDITY_DATA LP RP;
 read_pressure_data: READ_PRESSURE_DATA LP RP;
 read_quality_data: READ_QUALITY_DATA LP RP;
-read_light_data:= READ_LIGHT_DATA LP RP;
+read_light_data: READ_LIGHT_DATA LP RP;
 
 read_sound_data: READ_SOUND_DATA LP RP;
 read_timer_data:  READ_TIMER_DATA LP RP;
@@ -157,7 +157,8 @@ ident_list:identifier
  
 %%
 #include "lex.yy.c"
-void yyerror(char *s) { printf("%s", s); }
+int lineno = 1;
+void yyerror(char *s) { printf("%s at %d", s, lineno); }
 int main() {
  return yyparse();
 }
