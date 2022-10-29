@@ -5,7 +5,7 @@ Project for the CS315- Programming Languages course in which we defined our own 
 - `cs315f22_team23.lex` :  Lexical analyzer of the language.
 - `cs315f22_team23.yacc` :   Parser of the language.
 - `cs315f22_team23.txt` :  Example programs to test the language.
-- `cs315_project_final_report` :   Final project report which include the language specifications.
+- `cs315_project_final_report` :   Final project report which includes the BNF description, explanation of the language constructions, non-trivial tokens and the evaluation of the Language.
 
 
 ## Authors
