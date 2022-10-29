@@ -1,0 +1,60 @@
+begin
+#FIRST PROGRAM#
+string my_string_1 = "I love cs315";
+#error: there should be a semicolon after assignment statements in for loops #
+for (int iter = 0, iter <= 10; iter = iter + 1) {
+    string my_input = IN$;
+    if( my_string_1 == my_input) {
+	OUT$"my_string_1 contains the given string";
+    };
+   else {
+	x+ 5 /6 * 8
+#error: in the above line, logic expression should be assigned to a variable #
+	OUT$"b doesn’t contain the given string";
+    };
+};
+
+
+#SECOND PROGRAM#
+float newFloat = 1.15;
+int b = 3;
+#error: if statement should include comparison operation, not assignment#
+if( int a = 5)
+{
+	a = 7 + 9;
+};
+int a = 5*b+6/3 -4;
+while(newFloat < 12){
+	newFloat=newFloat+1;
+}; 
+OUT$ newFloat;
+b < 3 ? b = b+1;  b = a*2;
+
+#THIRD PROGRAM#
+#error: READ_HUMIDITY_DATA function does not take any parameters#
+float data_of_sensor_1 = READ_HUMIDITY_DATA(4);
+float data_of_sensor_5 = READ_TEMP_DATA();
+string data_of_timer  = READ_TIMER_DATA();
+CONNECT_TO_URL("https://www.cs.bilkent.edu.tr/~guvenir/courses/CS315/Pr1");
+SEND_DATA_TO_CONNECTION("my_example_link.com", 5);
+
+my_example_function(float a, float b) {
+float sum = a + b;
+if(sum >= 1.2) {
+		SWITCH_ON(1,4,6);		
+		SWITCH_OFF(2);
+};
+#error: Switch_off method can take integer values as a parameter but it takes float#
+SWITCH_OFF( 5 ,  4.3);
+return sum; 
+};
+
+#if the sum of datas from sensors 1 and 5 are greater or equal to 1.2 turn switches 1,4,6 on and 2 off. Also return the sum#
+
+my_example_function(data_of_sensor_1, data_of_sensor_5);
+
+end
+
+
+
+
